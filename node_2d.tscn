@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://6g8wdpawt4lw"]
+
+[ext_resource type="Script" uid="uid://djna56s3x1fvl" path="res://rigid_body_2d.gd" id="1_d21ai"]
+[ext_resource type="Texture2D" uid="uid://c7p3nds8axfc1" path="res://art/enemyFlyingAlt_1.png" id="1_kdubu"]
+[ext_resource type="Texture2D" uid="uid://dsusk7g4i5o7y" path="res://art/enemyFlyingAlt_2.png" id="2_d21ai"]
+[ext_resource type="Texture2D" uid="uid://bw23g2f5dkdpy" path="res://art/enemySwimming_1.png" id="3_rj586"]
+[ext_resource type="Texture2D" uid="uid://d1sskdp71cdtn" path="res://art/enemySwimming_2.png" id="4_4d7sh"]
+[ext_resource type="Texture2D" uid="uid://ce2h07dce5p1f" path="res://art/enemyWalking_1.png" id="5_ir8iy"]
+[ext_resource type="Texture2D" uid="uid://bj1gqdntxd2ig" path="res://art/enemyWalking_2.png" id="6_hqns4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x0ka3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kdubu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_d21ai")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_rj586")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4d7sh")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ir8iy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hqns4")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kdubu"]
+radius = 24.0
+height = 66.0
+
+[node name="Mob" type="RigidBody2D" unique_id=375148274 groups=["mobs"]]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_d21ai")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=383083354]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_x0ka3")
+animation = &"swim"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1749231988]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_kdubu")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2141543068]
